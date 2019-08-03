@@ -38,20 +38,28 @@ const R = require('../app');
 
 describe('Field test for killer robot', function(){
    
-    let num = 6;
-    let str = 'teste';
-    let boo = false;
+    let robot = R;
 
-    it('check that num is numeric', function(){
-        assert.isNumber(num);
-    });
-
-    it('check that str is String', function(){
-        assert.isString(str);
-    });
-
-    it('check that str is Boolean', function(){
-        assert.isBoolean(boo);
+    it('check that robot talks string', function(){
+        assert.isString(robot.talk());
     });
     
+    it.skip('check that robot uses allowed phrases', function(){
+        for(let i=0; i<8; i++) {
+            let phrase = robot.talk();
+            assert.oneOf(phrase, robot.phrases);
+        }
+       
+    });
+
+    it('make sure robot has ammo to fire', function(){
+        
+        for(let i=0; i<5; i++){
+            robot.fireCannon();
+            assert.isAtLeast(robot.ammo, 0);
+        }
+        
+    });
+    
+
 });

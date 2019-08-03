@@ -7,6 +7,7 @@ var Robot = function(){
                   'I\'m here to help.', 
                   'I took your job!'];
 };
+
 Robot.prototype.talk= function(){
     //returns a string
     let phrase = this.phrases[ Math.floor(Math.random() * this.phrases.length) ];
